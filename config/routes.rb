@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   get '/films' => 'films#index'
   get '/filmfestival' => 'films#index'
 
-  Rails.application.routes.draw do
-    namespace :api do
-      namespace :v1 do
-        resources :films, only: [:index, :create, :destroy, :update]
-      end
+  namespace :api do
+    namespace :v1 do
+      resources :films, only: [:index, :create, :destroy, :update]
+      resources :categories, only: [:index]
     end
   end
+
 end
