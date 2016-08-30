@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Category.delete_all
+Film.delete_all
 
-name = %w(summer winter italy spring forever)
+name = %w(summer winter italy spring forever old NYC green)
 name.each do |title|
   res = HTTParty.get("http://www.omdbapi.com/?t=#{title}")
   movie = res.parsed_response

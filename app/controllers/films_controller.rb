@@ -7,4 +7,8 @@ class FilmsController < ApplicationController
     films = Film.all.to_json
     render json: films
   end
+
+  def show
+    @film_id = params[:id]
+  end
 end

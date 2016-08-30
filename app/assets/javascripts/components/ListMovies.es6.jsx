@@ -25,8 +25,8 @@ class ListMovies extends React.Component {
       <div className='container'>
         <div className='row text-center'>
           {this.state.movies.map((movie, idx) => {
-            return (<div className='col-md-12'>
-                      <header>{movie['title']}</header>
+            return (<div key={movie['id']} className='col-md-6'>
+                      <header >{movie['title']}</header>
                       <span>{movie['category']['name']}</span>
                       <p>{movie['plot']}</p>
                       <img src={movie['poster']}></img>
