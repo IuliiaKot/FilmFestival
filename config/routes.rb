@@ -4,10 +4,12 @@ Rails.application.routes.draw do
   get '/films' => 'films#index'
   get '/filmfestival' => 'films#index'
 
+  post '/users' => 'users#create'
+
   namespace :api do
     namespace :v1 do
-      resources :films, only: [:index, :create, :destroy, :update]
-      resources :categories, only: [:index]
+      resources :films, only: [:index, :show, :destroy, :update]
+      resources :categories, only: [:index, :show]
     end
   end
 

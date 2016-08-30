@@ -1,4 +1,24 @@
 class UserNewForm extends React.Component {
+
+
+
+  registerUser(e){
+    e.preventDefault();
+    // debugger
+    $.ajax({
+      url: '/users',
+      method: 'post',
+      data: {
+        user: {
+          first_name: this.refs.firstname.value,
+          username: this.refs.username.value,
+          email: this.refs.email.value,
+          password: this.refs.password.value,
+        }
+      }
+    })
+  }
+
   render() {
     return (
       <div className="container">
@@ -12,14 +32,14 @@ class UserNewForm extends React.Component {
 
         <div className="main-login main-center">
 
-          <form className="form-horizontal" method="post">
+          <form className="form-horizontal" onSubmit={this.registerUser.bind(this)}>
 
             <div className="form-group">
               <label htmlFor="name" className="cols-sm-2 control-label">Your Name</label>
               <div className="cols-sm-10">
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
-                  <input type="text" className="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+                  <input ref='firstname' type="text" className="form-control" name="name" id="name"  placeholder="Enter your Name"/>
                 </div>
               </div>
             </div>
@@ -29,7 +49,7 @@ class UserNewForm extends React.Component {
               <div className="cols-sm-10">
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-envelope fa" aria-hidden="true"></i></span>
-                  <input type="email" className="form-control" name="email" id="email"  placeholder="Enter your Email" required="true"/>
+                  <input ref='email' type="email" className="form-control" name="email" id="email"  placeholder="Enter your Email" required="true"/>
                 </div>
               </div>
             </div>
@@ -39,7 +59,7 @@ class UserNewForm extends React.Component {
               <div className="cols-sm-10">
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-users fa" aria-hidden="true"></i></span>
-                  <input type="text" className="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+                  <input ref='username' type="text" className="form-control" name="username" id="username"  placeholder="Enter your Username"/>
                 </div>
               </div>
             </div>
@@ -49,13 +69,13 @@ class UserNewForm extends React.Component {
               <div className="cols-sm-10">
                 <div className="input-group">
                   <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                  <input type="password" className="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+                  <input ref='password' type="password" className="form-control" name="password" id="password"  placeholder="Enter your Password"/>
                 </div>
               </div>
             </div>
 
             <div className="form-group ">
-              <button type="button" className="btn btn-primary btn-lg btn-block login-button">Register</button>
+              <input type="submit" className="btn btn-primary btn-lg btn-block login-button" value="Register"/>
             </div>
             <div className="login-register">
               <a href="">Login</a>
