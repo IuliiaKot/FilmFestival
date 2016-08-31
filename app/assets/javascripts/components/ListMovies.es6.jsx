@@ -30,7 +30,6 @@ class ListMovies extends React.Component {
                       <span>{movie['category']['name']}</span>
                       <p>{movie['plot']}</p>
                       <img src={movie['poster']}></img>
-                      <a>Create a new review</a>
                     </div>)
           })}
         </div>

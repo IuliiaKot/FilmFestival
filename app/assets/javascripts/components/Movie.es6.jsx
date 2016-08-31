@@ -49,6 +49,7 @@ class Movie extends React.Component {
                       </div>)
           })}
         </div>
+          <a href='/reviews/new'>Create a new review</a>
       </div>
     )
   }
