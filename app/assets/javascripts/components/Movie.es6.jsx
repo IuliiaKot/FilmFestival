@@ -22,13 +22,16 @@ class Movie extends React.Component {
       url: `/api/v1/films/${this.props.id}/reviews`
     })
     .done(response => {
-      // debugger
       this.setState({ reviews: response})
     })
   }
 
+  updateReview(review){
+    this.setState({reviews: [review].concat(this.state.reviews)})
+  }
+
+
   render() {
-    debugger
     return (
       <div className='container'>
         <div className='row'>
@@ -49,7 +52,8 @@ class Movie extends React.Component {
                       </div>)
           })}
         </div>
-          <a href='/reviews/new'>Create a new review</a>
+
+        <ReviewForm data={this.state.movie.id}  onUpdate={this.updateReview.bind(this)} user={this.props.current_user}/>
       </div>
     )
   }

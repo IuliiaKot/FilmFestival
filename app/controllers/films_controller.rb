@@ -11,4 +11,7 @@ class FilmsController < ApplicationController
   def show
     @film_id = params[:id]
   end
+
+  def new
+  end
 end

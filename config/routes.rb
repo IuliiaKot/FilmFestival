@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/filmfestival' => 'films#index'
 
   resources :users, only: [:new, :create]
+
+  resources :reviews, only: [:new, :create]
+
   get '/sessions/login' => 'sessions#new'
   post '/sessions' => 'sessions#create'
   get '/sessions/logout' => 'sessions#destroy'
