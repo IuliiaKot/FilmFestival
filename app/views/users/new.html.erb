@@ -1,3 +1,11 @@
 <div class="">
-  <%= react_component 'App'%>
+  <% debugger %>
+  <% if @errors %>
+    <ul>
+      <%= @errors.each do |error| %>
+        <li><%= error%></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= react_component 'App', errors: @errors%>
 </div>

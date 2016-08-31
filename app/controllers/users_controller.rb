@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       redirect_to '/filmfestival'
     else
       @errors = @user.errors.full_messages
+      # render json: (review.errors)
       render 'new'
     end
   end

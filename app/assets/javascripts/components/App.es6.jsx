@@ -2,7 +2,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <UserNewForm />
+      <UserNewForm errors={this.props.errors}/>
     )
   }
 }

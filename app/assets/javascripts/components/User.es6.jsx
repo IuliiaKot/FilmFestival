@@ -17,6 +17,7 @@ class UserNewForm extends React.Component {
   }
 
   render() {
+    debugger
     return (
       <div className="container">
         <div className="row main">
