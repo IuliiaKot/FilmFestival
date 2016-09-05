@@ -14,12 +14,6 @@ name.each do |title|
   res = HTTParty.get("http://www.omdbapi.com/?t=#{title}")
   # debugger
   movie = res.parsed_response
-
-  # movie['Genre'].split(', ').each do |category|
-  #   Category.create!(name: category) if !Category.find_by(name: category)
-  # end
-  # Category.create!(name: movie['Genre'].split(',').first)
-  # debugger
   Film.create!(title: movie['Title'],
               director: movie['Director'],
               plot: movie['Plot'],
