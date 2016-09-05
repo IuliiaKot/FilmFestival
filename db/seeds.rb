@@ -8,15 +8,25 @@
 Category.delete_all
 Film.delete_all
 
-name = %w(summer winter italy spring forever old NYC green)
+name = %w(summer winter italy spring forever old green wall)
 name.each do |title|
   res = HTTParty.get("http://www.omdbapi.com/?t=#{title}")
+  # debugger
   movie = res.parsed_response
 
-  Category.create!(name: movie['Genre'].split(',').first)
+  movie['Genre'].split(', ').each do |category|
+    Category.create!(name: category) if !Category.find_by(name: category)
+  end
+  # Category.create!(name: movie['Genre'].split(',').first)
   # debugger
-  Film.create!(title: movie['Title'], director: movie['Director'].split(',').last, plot: movie['Plot'], poster: movie['Poster'], category_id: Category.find_by(name: movie['Genre'].split(',').first).id)
-
+  Film.create!(title: movie['Title'],
+              director: movie['Director'],
+              plot: movie['Plot'],
+              year: movie['Year'],
+              released: movie['Released'],
+              runtime: movie['Runtime'],
+              writer: movie['Writer'],
+              poster: movie['Poster'])
 end
 
 # movies.each do |movie|

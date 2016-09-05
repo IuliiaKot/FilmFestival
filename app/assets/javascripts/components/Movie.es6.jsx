@@ -33,25 +33,33 @@ class Movie extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-md-6'><img src={this.state.movie.poster}/></div>
-          <div className='col-md-6'>
-            <h4>Title: {this.state.movie.title}</h4>
-            <h4>Director: {this.state.movie.director}</h4>
-            <p><b>Plot</b>:{this.state.movie.plot}</p>
+      <div className='movie'>
+          <div className='row'>
+            <div className='col-md-4'><img src={this.state.movie.poster}/></div>
+            <div className='col-md-8'>
+              <p><b>Title:</b> {this.state.movie.title} ({this.state.movie.year})</p>
+              <p><b>Runtime:</b> {this.state.movie.runtime}</p>
+              <p><b>Released:</b> {this.state.movie.released}</p>
+              <p><b>Director:</b> {this.state.movie.director}</p>
+              <p><b>Writer:</b> {this.state.movie.writer}</p>
+              <p><b>Plot:</b> {this.state.movie.plot}</p>
+            </div>
           </div>
-        </div>
 
-        <div className='row'>
-          {this.state.reviews.map((obj, key) => {
-              return (<div className='col-md-12 text-center'>
-                       <span><b>Raiting:</b>{obj.rating}</span>
-                       <span><b>Author:</b>{obj.user.username}</span>
-                       <p>{obj.content}</p>
-                      </div>)
-          })}
-        </div>
+          <div className='row reviews'>
+            {this.state.reviews.map((obj, key) => {
+                return (<div className='one-review col-md-12'>
+                          <div className='col-md-2 text-left'>
+                            <span><b>Raiting: </b>{obj.rating}</span><br/>
+                            <span><b>Author: </b>{obj.user.username}</span><br/>
+                          </div>
+                          <div className='col-md-10 '>
+                            <p>{obj.content}</p>
+                          </div>
+                        </div>)
+            })}
+          </div>
+
 
         <ReviewForm data={this.state.movie.id}  onUpdate={this.updateReview.bind(this)} user={this.props.current_user}/>
       </div>

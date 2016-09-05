@@ -1,4 +1,6 @@
 class Api::V1::ReviewsController < Api::V1::BaseController
+
+
   def index
     # debugger
     # respond_with (Category.first.as_json(include:[:films]))

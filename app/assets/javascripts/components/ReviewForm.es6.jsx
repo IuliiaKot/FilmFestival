@@ -3,6 +3,7 @@ class ReviewForm extends React.Component {
 
   createReview(e) {
     e.preventDefault();
+    debugger
     let content = this.refs.content.value;
     let rating = this.refs.rating.value;
     $.ajax({
@@ -27,21 +28,32 @@ class ReviewForm extends React.Component {
 
   render(){
     return (
-      <div className='container'>
-        <div className='col-md-6' onSubmit={this.createReview.bind(this)}>
-          <form>
+        <div className='container col-md-10 form-review'>
+          <form className="form-horizontal" onSubmit={this.createReview.bind(this)}>
             <div className="form-group">
-              <input ref='rating' type='integer' name='review[rating]' class="form-control"/>
+              <label className="col-sm-2 control-label">Raiting</label>
+              <div className="col-sm-10">
+                <select ref='rating'className="form-control" id="raiting">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
             </div>
             <div className="form-group">
-              <textarea ref='content' class="form-control" rows="8" cols='58'></textarea>
+              <label htmlFor="review" className="col-sm-2 control-label">Review</label>
+              <div className="col-sm-10">
+                <textarea ref='content' className="form-control review-textarea" id="review" rows="8" ></textarea>
+              </div>
             </div>
 
-            <div className="form-group ">
-              <input type="submit" className="btn btn-primary btn-lg btn-block login-button" value="Submit"/>
+            <div className="form-group">
+              <div className="post-review-btn"><input type="submit" className="btn btn-primary btn-lg" value="Submit"/></div>
             </div>
           </form>
-        </div>
+
       </div>
     )
   }
