@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.delete_all
 Film.delete_all
+CategoryFilm.delete_all
 
 name = %w(summer winter italy spring forever old green wall)
 name.each do |title|
@@ -14,9 +15,9 @@ name.each do |title|
   # debugger
   movie = res.parsed_response
 
-  movie['Genre'].split(', ').each do |category|
-    Category.create!(name: category) if !Category.find_by(name: category)
-  end
+  # movie['Genre'].split(', ').each do |category|
+  #   Category.create!(name: category) if !Category.find_by(name: category)
+  # end
   # Category.create!(name: movie['Genre'].split(',').first)
   # debugger
   Film.create!(title: movie['Title'],
@@ -27,6 +28,12 @@ name.each do |title|
               runtime: movie['Runtime'],
               writer: movie['Writer'],
               poster: movie['Poster'])
+
+  movie['Genre'].split(', ').each do |category|
+    if !Category.find_by(name: category)
+      Film.last.categories << Category.create!(name: category)
+    end
+  end
 end
 
 # movies.each do |movie|

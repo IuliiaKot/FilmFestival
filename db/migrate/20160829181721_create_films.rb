@@ -9,8 +9,6 @@ class CreateFilms < ActiveRecord::Migration[5.0]
       t.string :writer
       t.string :poster
       t.text :plot, null: false
-      t.references :category, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end
