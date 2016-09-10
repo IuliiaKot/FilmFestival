@@ -8,13 +8,12 @@ class ListMovies extends React.Component {
       <div className='container'>
         <div className='row text-center'>
           {data.map((movie, idx) => {
-            return (<div key={movie['id']} className='col-md-6'>
+            return (<div key={movie['id']} className='col-md-4'>
                       <header><a href={`/films/${movie['id']}`}>{movie['title']}</a></header>
                       {movie.categories.map((category, idx) => {
                         return (<a><span key={idx}>{category['name']} </span></a>)
                       })}
-                      <p>{movie['plot']}</p>
-                      <img src={movie['poster']}></img>
+                      <img class='film' src={movie['poster']}></img>
                     </div>)
           })}
         </div>
