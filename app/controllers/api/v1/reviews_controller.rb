@@ -4,7 +4,8 @@ class Api::V1::ReviewsController < Api::V1::BaseController
   def index
     # debugger
     # respond_with (Category.first.as_json(include:[:films]))
-    respond_with (Film.find_by(id:  params[:film_id]).reviews.to_json(include: :user))
+    film = Film.find_by(id:  params[:film_id])
+    respond_with (Film.find_by(id:  params[:film_id]).reviews.to_json(include: {:user => {:only => [:username, :email]}}))
   end
 
   def show

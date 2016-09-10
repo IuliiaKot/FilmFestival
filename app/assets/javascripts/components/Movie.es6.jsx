@@ -4,17 +4,18 @@ class Movie extends React.Component {
     super();
     this.state = {
       movie: '',
-      reviews: []
+      reviews: [],
+      avarageRating: 0
     }
   }
 
   componentDidMount(){
+
     $.ajax({
       method: 'get',
       url: `/api/v1/films/${this.props.id}`
     })
     .done(response => {
-      debugger
       this.setState({movie: response})
     });
 
@@ -24,7 +25,10 @@ class Movie extends React.Component {
     })
     .done(response => {
       this.setState({ reviews: response})
+      this.setState({avarageRating: response.reduce((curr, obj) => curr + obj.rating,0)/response.length})
     })
+
+
   }
 
   updateReview(review){
@@ -33,13 +37,14 @@ class Movie extends React.Component {
 
 
   render() {
-    // debugger
+
     return (
       <div className='movie'>
           <div className='row'>
             <div className='col-md-4'><img src={this.state.movie.poster}/></div>
             <div className='col-md-8'>
               <p><b>Title:</b> {this.state.movie.title} ({this.state.movie.year})</p>
+              <p><i className="fa fa-star rating" aria-hidden="true">{this.state.avarageRating}</i></p>
               <p><b>Caregory:</b> {this.state.movie.category} ({this.state.movie.year})</p>
               <p><b>Runtime:</b> {this.state.movie.runtime}</p>
               <p><b>Released:</b> {this.state.movie.released}</p>
