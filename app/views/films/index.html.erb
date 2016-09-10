@@ -1,4 +1,4 @@
 <div class="container">
   <h4 class='text-center'>Red Pandas Film Festival 2016</h4>
-  <%= react_component 'Body'%>
+  <%= react_component 'Main', categories: Category.select('id, name') %>
 </div>

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       end
 
       resources :categories, only: [:index, :show]
+      # get '/:name' => 'api/v1/categories#find_movie'
     end
   end
 

@@ -6,6 +6,7 @@ class Api::V1::FilmsController < Api::V1::BaseController
   end
 
   def show
+    # debugger
     # Film.find_by(id: params[:id]).to_json(include: :reviews)
     respond_with (Film.find_by(id: params[:id]).to_json(include: :categories))
   end

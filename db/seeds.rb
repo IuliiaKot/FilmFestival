@@ -9,7 +9,7 @@ Category.delete_all
 Film.delete_all
 CategoryFilm.delete_all
 
-name = %w(summer winter italy spring forever old green wall)
+name = %w(summer winter italy spring forever old green wall wife happy life)
 name.each do |title|
   res = HTTParty.get("http://www.omdbapi.com/?t=#{title}")
   # debugger
@@ -26,6 +26,8 @@ name.each do |title|
   movie['Genre'].split(', ').each do |category|
     if !Category.find_by(name: category)
       Film.last.categories << Category.create!(name: category)
+    else
+      Film.last.categories << Category.find_by(name: category)
     end
   end
 end
