@@ -1,24 +1,5 @@
 class ListMovies extends React.Component {
 
-  // constructor(){
-  //   super();
-  //   this.state = {
-  //     movies: []
-  //   }
-  // }
-  //
-  //
-  // componentDidMount(){
-  //   $.ajax({
-  //     method: 'get',
-  //     url: '/api/v1/films.json'
-  //   }).done((response => {
-  //     debugger
-  //     this.setState({movies: response})
-  //   })
-  //
-  //   )
-  // }
 
   render() {
     let data = this.props.movies
@@ -30,7 +11,7 @@ class ListMovies extends React.Component {
             return (<div key={movie['id']} className='col-md-6'>
                       <header><a href={`/films/${movie['id']}`}>{movie['title']}</a></header>
                       {movie.categories.map((category, idx) => {
-                        return (<span key={idx}>{category['name']} </span> )
+                        return (<a><span key={idx}>{category['name']} </span></a>)
                       })}
                       <p>{movie['plot']}</p>
                       <img src={movie['poster']}></img>
