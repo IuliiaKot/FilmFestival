@@ -14,6 +14,7 @@ class Movie extends React.Component {
       url: `/api/v1/films/${this.props.id}`
     })
     .done(response => {
+      debugger
       this.setState({movie: response})
     });
 
@@ -32,12 +33,14 @@ class Movie extends React.Component {
 
 
   render() {
+    // debugger
     return (
       <div className='movie'>
           <div className='row'>
             <div className='col-md-4'><img src={this.state.movie.poster}/></div>
             <div className='col-md-8'>
               <p><b>Title:</b> {this.state.movie.title} ({this.state.movie.year})</p>
+              <p><b>Caregory:</b> {this.state.movie.category} ({this.state.movie.year})</p>
               <p><b>Runtime:</b> {this.state.movie.runtime}</p>
               <p><b>Released:</b> {this.state.movie.released}</p>
               <p><b>Director:</b> {this.state.movie.director}</p>
