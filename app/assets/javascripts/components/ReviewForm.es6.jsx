@@ -28,7 +28,7 @@ class ReviewForm extends React.Component {
 
   render(){
     return (
-        <div className='container col-md-10 form-review'>
+        <div className='container col-md-10 form-review col-md-offset-1'>
           <form className="form-horizontal" onSubmit={this.createReview.bind(this)}>
             <div className="form-group">
               <label className="col-sm-2 control-label">Raiting</label>

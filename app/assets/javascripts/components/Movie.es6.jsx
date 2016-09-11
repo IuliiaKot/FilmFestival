@@ -37,20 +37,19 @@ class Movie extends React.Component {
 
 
   render() {
-
+    debugger
     return (
       <div className='movie'>
           <div className='row'>
-            <div className='col-md-4'><img src={this.state.movie.poster}/></div>
+            <div className='col-md-4'><img className='film' src={this.state.movie.poster}/></div>
             <div className='col-md-8'>
-              <p><b>Title:</b> {this.state.movie.title} ({this.state.movie.year})</p>
+              <div className='film-description'><p className='movie-title'>{this.state.movie.title} ({this.state.movie.year})</p>
               <p><i className="fa fa-star rating" aria-hidden="true">{this.state.avarageRating}</i></p>
-              <p><b>Caregory:</b> {this.state.movie.category} ({this.state.movie.year})</p>
               <p><b>Runtime:</b> {this.state.movie.runtime}</p>
               <p><b>Released:</b> {this.state.movie.released}</p>
               <p><b>Director:</b> {this.state.movie.director}</p>
               <p><b>Writer:</b> {this.state.movie.writer}</p>
-              <p><b>Plot:</b> {this.state.movie.plot}</p>
+              <p><b>Plot:</b> {this.state.movie.plot}</p></div>
             </div>
           </div>
 

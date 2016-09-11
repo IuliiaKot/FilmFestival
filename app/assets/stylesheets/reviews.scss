@@ -14,7 +14,7 @@
   }
   .one-review  {
     margin-top: 10px;
-    border-bottom: solid 2px grey;
+    // border-bottom: solid 2px grey;
   }
 
   .form-review {
@@ -26,5 +26,13 @@
 
   .post-review-btn {
     margin-left: 180px;
+  }
+
+
+  .form-review{
+    padding: 10px;
+    background: grey;
+    border-radius: 3px;
+    box-shadow: 6px 6px 5px #666666;
   }
 }
