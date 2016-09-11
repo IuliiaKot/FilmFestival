@@ -12,21 +12,30 @@ class NavBar extends React.Component {
 
   render () {
     return (
-      <nav className="navbar navbar-light bg-faded">
-          {this.props.current_user ? (<ul className="nav navbar-nav">
-                                        <li className="nav-item active">
-                                          <a className="nav-link" href="/filmfestival">Home </a></li>
-                                        <li className="nav-item">
-                                          <a className="nav-link" href="/sessions/logout">Logout</a>
+      <nav className="navbar navbar-inverse">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <a className="navbar-brand" href="/filmfestival">Fall Film Festival</a>
+          </div>
+
+          <div className="collapse navbar-collapse" id="myNavbar">
+            <ul className="nav navbar-nav">
+              <li className="active" href="/filmfestival"><a href="#">Home</a></li>
+            </ul>
+          {this.props.current_user ? (<ul className="nav navbar-nav navbar-right">
+                                        <li>
+                                          <a href="/sessions/logout"><span className="glyphicon glyphicon-log-out"></span> Logout</a>
                                         </li></ul>)
-                                    : (<ul className="nav navbar-nav">
-                                        <li className="nav-item">
-                                          <a className="nav-link" href="/users/new">Register</a></li>
-                                        <li className="nav-item">
-                                          <a className="nav-link" href="/sessions/login">Login</a>
+                                    : (<ul className="nav navbar-nav navbar-right">
+                                        <li>
+                                          <a href="/users/new"><span className="glyphicon glyphicon-user"></span> Register</a></li>
+                                        <li>
+                                          <a href="/sessions/login"><span className="glyphicon glyphicon-log-in"></span> Login</a>
                                         </li>
                                       </ul>)}
-      </nav>
+                      </div>
+                    </div>
+                  </nav>
     )
   }
 }
