@@ -9,7 +9,7 @@ class ListMovies extends React.Component {
         <div className='row text-center'>
           {data.map((movie, idx) => {
             return (<div key={movie['id']} className='col-md-3'>
-                      <header><a href={`/films/${movie['id']}`}>{movie['title']}</a></header>
+                      <header className='title'><b><a href={`/films/${movie['id']}`}>{movie['title']}</a></b></header>
                       {movie.categories.map((category, idx) => {
                         return (<a><span key={idx}>{category['name']} </span></a>)
                       })}

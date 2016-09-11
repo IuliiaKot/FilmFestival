@@ -26,8 +26,9 @@ class MovieFilterBar extends React.Component {
           </li>)
 
     return (
-        <ul className='navbar navbar-light bg-faded'>
+        <ul className='navbar navbar-light bg-faded list-inline'>
           {dropdown_categories}
+          <li><a href='#'>Latest News</a></li>
         </ul>
     )
   }
